@@ -1,0 +1,24 @@
+<h2>Please enter new question & answer pair below:</h2>
+<div>
+    <div class="inputdata">
+        <label class="infoqa">Intent:</label>
+        <span><input class="qainput" [(ngModel)]="qadata.intent" placeholder="intent"/></span>
+        <div class="clear"></div>
+    </div>
+    <div class="inputdata">
+        <label class="infoqa">Question:</label>
+        <span><input class="qainput" [(ngModel)]="qadata.question" placeholder="question"/></span>
+        <div class="clear"></div>
+    </div>
+    <div class="inputdata">
+        <label class="infoqa">Answer:</label>
+        <span><input class="qainput" [(ngModel)]="qadata.answer" placeholder="answer"/></span>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <button (click)="onAdd(qadata)" type="button">
+            Add new pair
+        </button>
+    </div>
+</div>
+<app-entereddata [qa]="newQAdata"></app-entereddata>
