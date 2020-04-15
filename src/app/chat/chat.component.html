@@ -1,0 +1,17 @@
+<h2>Simple search. Human interraction test</h2>
+<p class="instructionsbot">Please enter question. Bot should answer something. Please provide feedback. If the answer was wrong (either intent wasn't recognized or none of the 10 links provided contains the correct answer), please enter correct answer, either in form of a link or text</p>
+<div>
+    <div class="chatdata">
+        <label class="chatqa">Question:</label>
+        <span><input class="qainput" [(ngModel)]="qadata.question" placeholder="question"/></span>
+        <div class="clear"></div>
+        <button (click)="onSearch(qadata)" type="button">
+            Search
+        </button>
+    </div>
+    <div class="chatdata" [hidden]="!visible">
+        <label class="chatqa">Answers:</label>
+        <span><input class="qainput" [(ngModel)]="qadata.answer" placeholder="answer"/></span>
+        <div class="clear"></div>
+    </div>
+</div>
