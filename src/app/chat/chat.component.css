@@ -3,6 +3,12 @@ div.chatdata{
     list-style-type: none;
     padding: 0;
     width: 100%;
+
+}
+
+div.container {
+  width: 70%;
+  min-width: 50%;
 }
 
 div.chatdata label{
@@ -20,6 +26,39 @@ div.chatdata label{
     width: 5em;
 }
 
+div.chatdatareview {
+    padding: 0.8em 0.7em 0 0.7em;
+    line-height: 1em;
+    position: absolute;
+    left: -1px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+    width: 5em;
+}
+
+p.reviewclass {
+  float:left;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  height: 1.8em;
+  margin-top: 1em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+  width: 26.5em;
+}
+
+ul.nobullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 div.chatdata span{
     display: block;
     overflow: hidden;
@@ -27,7 +66,7 @@ div.chatdata span{
 
 div.chatdata input{
     display: inline-block;
-    width: 50%;
+    width: 100%;
     background-color: #EEE;
     padding: .3em;
     margin: .1em;
@@ -45,7 +84,7 @@ p.instructionsbot{
 }
 
 .clear {
-    clear: both; 
+    clear: both;
 }
 /* Button */
 button {
@@ -59,11 +98,11 @@ button {
     background-color: #405061;
     border: none;
     display: block;
-    margin-left: 49.5%;
     margin-top: 1em;
-    margin-right: auto;
+    margin-right: 0;
+    margin-left: auto;
 }
-  
+
 button:hover {
     opacity: 0.8;
     font-weight: normal;
