@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "data-preprocessing"
+    }
+  },
+  "defaultProject": "data-preprocessing",
+  "cli": {
+    "analytics": "057e1684-c9ac-47a1-9059-6310242149d0"
+  }
 }
