@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QAdata } from '../qadata';
 import { Option } from '../option';
 import { Answer } from '../answer';
+import { ClientServiceService } from '../client-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -20,32 +21,34 @@ export class ChatComponent implements OnInit {
      new Option(4, '4'),
      new Option(5, '5')
   ];
-  answers: Answer[] = [
-    new Answer("1", '1'),
-    new Answer("2", '2'),
-    new Answer("3", '3'),
-    new Answer("4", '4'),
-    new Answer("5", '5')
- ];
+  answers: Answer[];
 
-  constructor() { }
+  constructor(private clientService: ClientServiceService) { }
 
   getOptionValue(optionid) {
     this.selectedOption = this.options.filter((item)=> item.id == optionid)[0];
     if (this.selectedOption.id <= 3) {
       this.showCorrectAnswerInput = true;
+    } else {      
+      this.showCorrectAnswerInput = false;
     }
     console.log(this.selectedOption)
   }
 
   onSearch(question: string) {
     console.log(question);
-    this.isvisible = true;
+    this.isvisible = true;  
+
+    this.clientService.sendQuestion(question).subscribe(answer => {
+      this.answers = answer as Answer[];
+    });
   }
 
   onKey(event: any) {
     if (this.isvisible) {
       this.isvisible = false;
+      // reset value
+      this.selectedOption = new Option(5, '5');
     }
 
     if (this.showCorrectAnswerInput) {
@@ -55,6 +58,7 @@ export class ChatComponent implements OnInit {
 
   onSendStatistics(qadata) {
     qadata.raiting = this.selectedOption;
+    this.clientService.sendStatistics(qadata);
     console.log(qadata);
   }
 

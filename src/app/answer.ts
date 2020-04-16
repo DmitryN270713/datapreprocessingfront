@@ -1,3 +1,3 @@
 export class Answer {
-  constructor(answer: string, intent: string) {}
+  constructor(public data: string, public intent: string) {}
 }

@@ -1,59 +1,57 @@
 <h2>Simple search. Human interraction test</h2>
 <p class="instructionsbot">Please enter question. Bot should answer something. Please provide feedback. If the answer was wrong (either intent wasn't recognized or none of the 10 links provided contains the correct answer), please enter correct answer, either in form of a link or text</p>
 <div>
-    <div class="chatdata">
-      <div class="container">
-        <label class="chatqa">Question:</label>
-        <span><input class="qainput" [(ngModel)]="qadata.question" placeholder="question" (keyup)="onKey($event)"/></span>
-        <div class="clear"></div>
-        <button (click)="onSearch(qadata.question)" type="button">
-          Search
-        </button>
-      </div>
+  <div class="chatdata">
+    <div class="container">
+      <label class="chatqa">Question:</label>
+      <span><input class="qainput" [(ngModel)]="qadata.question" placeholder="question" (keyup)="onKey($event)"/></span>
+      <div class="clear"></div>
+      <button (click)="onSearch(qadata.question)" type="button">
+        Search
+      </button>
     </div>
+  </div>
 
-    <div *ngIf="isvisible">
+  <div *ngIf="isvisible">
 
-      <div class="container">
-        <div class="chatdata">
-          <label class="chatqa">Answers:</label>
-          <span>
-            <ul class="nobullets">
-              <ng-container *ngIf="answers">
-                <li *ngFor="let answer of answers">
-                  <p>answer.answer</p>
-                </li>
-              </ng-container>
-            </ul>
-          </span>
-          <div class="clear"></div>
-        </div>
-
-        <div class="chatdatareview">
-          <p class="reviewclass">Please evaluate your satisfaction with the answers provided</p>
+    <div class="container">
+      <div class="chatdata">
+        <label class="chatqa">Answers:</label>
+        <span>
           <ul class="nobullets">
-            <li *ngFor="let option of options">
-              <input type="radio" name="review" (click)="getOptionValue(option.id)"
-                  [checked]="option.id == selectedOption.id"
-                  value = {{option.id}}/>{{option.value}}
-            </li>
+            <ng-container *ngIf="answers">
+              <li *ngFor="let answer of answers">
+                <p>{{answer.data}}</p>
+              </li>
+            </ng-container>
           </ul>
-        </div>
+        </span>
+        <div class="clear"></div>
+      </div>
 
-        <div *ngIf="showCorrectAnswerInput">
-          <div class="chatdata">
+      <div class="chatdatareview">
+        <p class="reviewclass">Please evaluate your satisfaction with the answers provided</p>
+        <ul class="nobullets clear">
+          <li *ngFor="let option of options">
+            <input type="radio" name="review" (click)="getOptionValue(option.id)"
+                [checked]="option.id == selectedOption.id"
+                value = {{option.id}}/>{{option.value}}
+          </li>
+        </ul>
+
+        <div *ngIf="showCorrectAnswerInput" class="reviewresponse">
+          <div class="chatdatauser">
             <label class="chatqa">Your answer:</label>
             <span><input class="qainput" [(ngModel)]="qadata.answer" placeholder="answer"/></span>
             <div class="clear"></div>
           </div>
         </div>
-
+  
         <button (click)="onSendStatistics(qadata)" type="button">
           Send Statistics
         </button>
 
       </div>
-
     </div>
-
+  </div>
 </div>
