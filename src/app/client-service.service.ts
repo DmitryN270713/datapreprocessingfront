@@ -23,14 +23,21 @@ export class ClientServiceService {
                   if (!res) {
                     throw new Error('Value expected!');
             }
-            
+
             return res;
     }), catchError(this.handleError('sendQuestion')));
   }
 
   sendStatistics(statistics: QAdata) {
-    return this.http.post<QAdata>(this.statsUrl, statistics, this.httpOptions)
-           .pipe(catchError(this.handleError('sendStatistics')));
+    console.log(JSON.stringify(statistics))
+    return this.http.post(this.statsUrl, JSON.stringify(statistics), this.httpOptions)
+           .pipe(map(res => {
+                  if (!res) {
+                    throw new Error('Value expected!');
+            }
+
+            return res;
+    }), catchError(this.handleError('sendStatistics')));
   }
 
   addQAPair(qadata: QAdata): Observable<QAdata>  {

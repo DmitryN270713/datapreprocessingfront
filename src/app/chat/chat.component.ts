@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit {
     this.selectedOption = this.options.filter((item)=> item.id == optionid)[0];
     if (this.selectedOption.id <= 3) {
       this.showCorrectAnswerInput = true;
-    } else {      
+    } else {
       this.showCorrectAnswerInput = false;
     }
     console.log(this.selectedOption)
@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit {
 
   onSearch(question: string) {
     console.log(question);
-    this.isvisible = true;  
+    this.isvisible = true;
 
     this.clientService.sendQuestion(question).subscribe(answer => {
       this.answers = answer as Answer[];
@@ -57,9 +57,10 @@ export class ChatComponent implements OnInit {
   }
 
   onSendStatistics(qadata) {
-    qadata.raiting = this.selectedOption;
-    this.clientService.sendStatistics(qadata);
-    console.log(qadata);
+    qadata.raiting = this.selectedOption.id;
+    this.clientService.sendStatistics(qadata).subscribe(res => {
+      console.log(res);
+    });
   }
 
   ngOnInit() {

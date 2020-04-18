@@ -21,7 +21,7 @@
           <ul class="nobullets">
             <ng-container *ngIf="answers">
               <li *ngFor="let answer of answers">
-                <p>{{answer.data}}</p>
+                <p><a href="{{answer.data}}">{{answer.data}}</a></p>
               </li>
             </ng-container>
           </ul>
@@ -46,7 +46,7 @@
             <div class="clear"></div>
           </div>
         </div>
-  
+
         <button (click)="onSendStatistics(qadata)" type="button">
           Send Statistics
         </button>
