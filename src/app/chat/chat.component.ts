@@ -41,6 +41,11 @@ export class ChatComponent implements OnInit {
 
     this.clientService.sendQuestion(question).subscribe(answer => {
       this.answers = answer as Answer[];
+      for (let item of this.answers) {
+        if (item.data.search('^http') != -1) {
+               item.islink = true;
+         }
+     }
     });
   }
 

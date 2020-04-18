@@ -21,7 +21,12 @@
           <ul class="nobullets">
             <ng-container *ngIf="answers">
               <li *ngFor="let answer of answers">
-                <p><a href="{{answer.data}}">{{answer.data}}</a></p>
+                <ng-container *ngIf="answer.islink; else normalText">
+                  <p><a href="{{answer.data}}">{{answer.data}}</a></p>
+                </ng-container>
+                <ng-template #normalText>
+                  <p>{{answer.data}}</p>
+                </ng-template>
               </li>
             </ng-container>
           </ul>
